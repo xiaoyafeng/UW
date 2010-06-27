@@ -1,0 +1,328 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Andy
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title> Windy's Home</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="./static/css/default.css" rel="stylesheet" type="text/css" />
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+
+</head>
+<body>
+
+<div id="header">
+	<ul id="menu">
+		<li><a href="#" accesskey="1" title="">首页</a></li>
+		<li><a href="purchase_manage.htm" accesskey="1" title=""> 管理</a></li>
+		<li><a href="#" accesskey="2" title="">登录</a></li>
+		<li><a href="#" accesskey="3" title="">信息</a></li>
+		<li><a href="#" accesskey="4" title="">关于</a></li>
+		<li><a href="#" accesskey="5" title="">联系我们</a></li>
+	</ul>
+	
+</div>
+<div id="content">
+	<div id="colOne">
+		<div id="logo"><script type="text/javascript">
+var $ = function (id) {
+    return "string" == typeof id ? document.getElementById(id) : id;
+};
+
+var Class = {
+  create: function() {
+    return function() {
+      this.initialize.apply(this, arguments);
+    }
+  }
+}
+
+Object.extend = function(destination, source) {
+    for (var property in source) {
+        destination[property] = source[property];
+    }
+    return destination;
+}
+
+
+var Calendar = Class.create();
+Calendar.prototype = {
+  initialize: function(container, options) {
+	this.Container = $(container);//容器(table结构)
+	this.Days = [];//日期对象列表
+	
+	this.SetOptions(options);
+	
+	this.Year = this.options.Year;
+	this.Month = this.options.Month;
+	this.SelectDay = this.options.SelectDay ? new Date(this.options.SelectDay) : null;
+	this.onSelectDay = this.options.onSelectDay;
+	this.onToday = this.options.onToday;
+	this.onFinish = this.options.onFinish;	
+	
+	this.Draw();
+  },
+  //设置默认属性
+  SetOptions: function(options) {
+	this.options = {//默认值
+		Year:			new Date().getFullYear(),//显示年
+		Month:			new Date().getMonth() + 1,//显示月
+		SelectDay:		null,//选择日期
+		onSelectDay:	function(){},//在选择日期触发
+		onToday:		function(){},//在当天日期触发
+		onFinish:		function(){}//日历画完后触发
+	};
+	Object.extend(this.options, options || {});
+  },
+  //上一个月
+  PreMonth: function() {
+	//先取得上一个月的日期对象
+	var d = new Date(this.Year, this.Month - 2, 1);
+	//再设置属性
+	this.Year = d.getFullYear();
+	this.Month = d.getMonth() + 1;
+	//重新画日历
+	this.Draw();
+  },  
+  //下一个月
+  NextMonth: function() {
+	var d = new Date(this.Year, this.Month, 1);
+	this.Year = d.getFullYear();
+	this.Month = d.getMonth() + 1;
+	this.Draw();
+  },
+  //画日历
+  Draw: function() {
+	//用来保存日期列表
+	var arr = [];
+	//用当月第一天在一周中的日期值作为当月离第一天的天数
+	for(var i = 1, firstDay = new Date(this.Year, this.Month - 1, 1).getDay(); i <= firstDay; i++){ arr.push("&nbsp;"); }
+	//用当月最后一天在一个月中的日期值作为当月的天数
+	for(var i = 1, monthDay = new Date(this.Year, this.Month, 0).getDate(); i <= monthDay; i++){ arr.push(i); }
+	
+	var frag = document.createDocumentFragment();
+	
+	this.Days = [];
+	
+	while(arr.length > 0){
+		//每个星期插入一个tr
+		var row = document.createElement("tr");
+		//每个星期有7天
+		for(var i = 1; i <= 7; i++){
+			var cell = document.createElement("td");
+			cell.innerHTML = "&nbsp;";
+			
+			if(arr.length > 0){
+				var d = arr.shift();
+				cell.innerHTML = d;
+				if(d > 0){
+					this.Days[d] = cell;
+					//判断是否今日
+					if(this.IsSame(new Date(this.Year, this.Month - 1, d), new Date())){ this.onToday(cell); }
+					//判断是否选择日期
+					if(this.SelectDay && this.IsSame(new Date(this.Year, this.Month - 1, d), this.SelectDay)){ this.onSelectDay(cell); }
+				}
+			}
+			row.appendChild(cell);
+		}
+		frag.appendChild(row);
+	}
+	
+	//先清空内容再插入(ie的table不能用innerHTML)
+	while(this.Container.hasChildNodes()){ this.Container.removeChild(this.Container.firstChild); }
+	this.Container.appendChild(frag);
+	
+	this.onFinish();
+  },
+  //判断是否同一日
+  IsSame: function(d1, d2) {
+	return (d1.getFullYear() == d2.getFullYear() && d1.getMonth() == d2.getMonth() && d1.getDate() == d2.getDate());
+  } 
+};
+
+</script>
+<style type="text/css">
+
+.Calendar {
+	font-family:Verdana;
+	font-size:12px;
+	background-color:#e0ecf9;
+	text-align:center;
+	width:200px;
+	height:160px;
+	padding:10px;
+	line-height:1.5em;
+}
+.Calendar a{
+	color:#1e5494;
+}
+
+.Calendar table{
+width:100%; 
+border:0;
+}
+
+.Calendar table thead{color:#acacac;}
+
+.Calendar table td {
+	font-size: 11px;
+	padding:1px;
+}
+#idCalendarPre{
+	cursor:pointer;
+	float:left;
+	padding-right:5px;
+}
+#idCalendarNext{
+	cursor:pointer;
+	float:right;
+	padding-right:5px;
+}
+#idCalendar td.onToday {
+	font-weight:bold;
+	color:#C60;
+}
+#idCalendar td.onSelect {
+	font-weight:bold;
+}
+</style>
+<div class="Calendar">
+  <div id="idCalendarPre">&lt;&lt;</div>
+  <div id="idCalendarNext">&gt;&gt;</div>
+  <span id="idCalendarYear">2008</span>年 <span id="idCalendarMonth">8</span>月
+  <table cellspacing="0">
+    <thead>
+      <tr>
+        <td>日</td>
+        <td>一</td>
+        <td>二</td>
+        <td>三</td>
+        <td>四</td>
+        <td>五</td>
+        <td>六</td>
+      </tr>
+    </thead>
+    <tbody id="idCalendar">
+    </tbody>
+  </table>
+</div>
+<script language="JavaScript">
+
+var cale = new Calendar("idCalendar", {
+	SelectDay: new Date().setDate(10),
+	onSelectDay: function(o){ o.className = "onSelect"; },
+	onToday: function(o){ o.className = "onToday"; },
+	onFinish: function(){
+		$("idCalendarYear").innerHTML = this.Year; $("idCalendarMonth").innerHTML = this.Month;
+		var flag = [10,15,20];
+		for(var i = 0, len = flag.length; i < len; i++){
+			this.Days[flag[i]].innerHTML = "<a href='javascript:void(0);' onclick=\"alert('日期是:"+this.Year+"/"+this.Month+"/"+flag[i]+"');return false;\">" + flag[i] + "</a>";
+		}
+	}
+});
+
+$("idCalendarPre").onclick = function(){ cale.PreMonth(); }
+$("idCalendarNext").onclick = function(){ cale.NextMonth(); }
+
+</script>
+			<img src="" alt=""  width="" height="" class=""/>
+		</div>
+		<div class="box">
+			<h3>近期信息</h3>
+			<ul class="bottom">
+				<li class="first"><a href="#">服装批发产品分类</a></li>
+				<li><a href="#">更新一览 </a></li>
+				<li><a href="#">内衣批发</a></li>
+				<li><a href="#">睡衣批发</a></li>
+				<li><a href="#">泳衣批发</a></li>
+				<li><a href="#">新款上市</a></li>
+			</ul>
+		</div>
+		<div class="box">
+			<h3>友情链接</h3>
+			<ul class="bottom">
+				<li class="first"><a href="#">依时服装</a></li>
+				<li><a href="http://www.taobao.com">淘宝网</a></li>
+				<li><a href="http://www.landisgyr.com.cn">兰吉尔公司</a></li>
+				
+			</ul>
+		</div>
+	</div>
+	<div id="colTwo">
+		<h2>欢迎来到风之屋！！</h2>
+<div id="demo" style="overflow: hidden; height: 100px; width: 500px;">    
+      <div id="demo1">
+        <div align="center">
+        
+       
+            <a href="#"><img src="./static/images/img11.jpg" border="0"></a>
+            <a href="#"><img src="./static/images/img12.jpg" border="0"></a>
+            <a href="#"><img src="./staticimages/img13.jpg" border="0"></a>
+
+  
+          </div>
+      </div>
+<div id="demo2">
+        <div align="center">
+        
+       
+           
+            <a href="#"><img src="./static/images/img11.jpg" border="0"></a>
+            <a href="#"><img src="./static/images/img12.jpg" border="0"></a>
+            <a href="#"><img src="./static/images/img13.jpg" border="0"></a>
+
+  
+          </div>
+      </div>
+<!--avascript-->
+<script>
+var demo2 = document.getElementById('demo2');
+var demo1 = document.getElementById('demo1');
+var demo  = document.getElementById('demo');
+var speed1=18;
+demo2.innerHTML=demo1.innerHTML;
+function Marquees1(){
+if(demo2.offsetTop-demo.scrollTop<=0)
+demo.scrollTop-=demo1.offsetHeight;
+else{
+demo.scrollTop++;
+}
+}
+var MyMars1=setInterval(Marquees1,speed1);
+demo.onmouseover=function() { clearInterval(MyMars1) };
+demo.onmouseout=function() { MyMars1=setInterval(Marquees1,speed1) };
+
+</script>
+</div>
+       <a href="#"><img src="./static/images/img10.jpg" width = "109px" height="109px" class="image"></a>
+		<p class="indent"><strong>风之屋</strong> 创立于20096月，致力于开发销售21世纪年轻女性产品，包括内衣，饰品，香水等</p>
+		<p class="indent">产品大多为出口日韩欧美或销往港台尾料余单，包括原单尾货、跟单，也有部分杂志仿单是合作厂家为迎合内销市场的需求在空余生产档期生产，由于涉及品牌版权，部分吊牌或者洗标出厂时被剪标处理，但是丝毫不影响内销穿着。</p>
+		<p class="indent">产品风格分为两种：<br>一种是高档精品刺绣款，面料会采用高档外单剩余尾料，适合有消费能力的时尚女性。<br>一种是比较花哨可爱的少女款式，一般是按杂志、爆款及工厂自产自销自主采购面料按日版生产，走大学生市场。</p>		
+<div class="box">
+			<h3>新产品入货</h3>
+			<h4><strong>04.21.2010</strong> | <a href="#"></a></h4>
+			<p class="bottom">今天引入了新款耳环，有兴趣的朋友快来看看哦！</p>
+		</div>
+		<div class="box">
+			<h3>开业了！</h3>
+			<h4><strong>04.01.2010</strong> | <a href="#"></a></h4>
+			<p class="bottom">2010年4月1日，风之屋女性内衣店正式在珠海凝析文化广场开业了！</p>
+		</div>
+	</div>
+</div>
+<div id="footer">
+	<p>Copyright (c) 2010 Andy All rights reserved. Design by Andy </p>
+</div>
+
+<div style="font-size: 0.8em; text-align: center;">
+<br />
+
+<br />
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<div id="content">
+<h3>库存查询</h3>
+<table summary="query" >
+
+
+
+<tbody>
+<tr><td width="150"><label>商品数量</label></td><td align="left"><select name="compare_op" size="0" style="width:150px"><option> &gt= &nbsp</option><option> == </option><option> &lt= </option></select><input type="text" size="10" /></td></tr>
+<tr><td width="150"><label>商品名</label></td><td align="left"><select style="width:150px">
+[% FOREACH merchant IN merchants -%]          
+         <option   value="[% merchant.mer_name %]">[% merchant.mer_name %]</option>  
+        [% END -%]
+
+
+
+</select></td></tr>
+<tr><td width="150">时间</td><td align="left">	
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <dl>
+                    <dt>From: </dt>
+                        <dd>
+                            <input type="text" id="date-picker1" class="date-pick" ></input>
+			</dd>
+                        <dt> To: </dt>
+								<dd>
+                            <input type="text" id="date-picker2" class="date-pick" ></input>
+			</dd>
+</dl>
+</td></tr>
+
+</tbody>
+</table>
+
+<button>查询</button>
+<table id="list4"  ></table>   
+<div id="list4"  ></div>  
+
+
+
+
+													
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+</p>
+
+</div>
+

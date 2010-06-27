@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Andy
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title> [% page_name %]</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="static/css/default.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" media="screen" href="static/css/ui-lightness/jquery-ui-1.8.1.custom.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="static/css/ui.jqgrid.css" />
+<
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+
+<script type="text/javascript" src="static/js/jquery-1.4.2.min.js" ></script>
+<script type="text/javascript" src="static/js/jquery-ui-1.8.1.custom.min.js"></script>
+<script type="text/javascript" src="static/js/ajaxupload.js" ></script>
+<script type="text/javascript" src="static/js/jquery.ufvalidator-1.0.4.js" ></script>
+<script type="text/javascript" src="static/js/grid.locale-cn.js"></script>
+<script type="text/javascript" src="static/js/jquery.jqGrid.min.js"></script>
+ 
+<script type="text/javascript" >
+$(document).ready(function(){
+$('#date-picker').datepicker();
+$('#date-picker1').datepicker();
+$('#date-picker2').datepicker();
+$("button, input:submit").button();
+//var $upload = $('#upload');
+//new AjaxUpload($upload, {action: upload.php});
+$('#submitBtn1').formValidator({
+			onSuccess       : function(){ console.log('Success!');},
+			scope           : '#form-1',
+			errorDiv        : '#errorDiv1'
+			});
+
+jQuery("#list4").jqGrid({
+	datatype: "local",
+	height: 250,
+   	colNames:['序列号','时间', '客户名', '数量','费率','总量','备注'],
+   	colModel:[
+   		{name:'id',index:'id', width:60, sorttype:"int"},
+   		{name:'invdate',index:'invdate', width:90, sorttype:"date"},
+   		{name:'name',index:'name', width:100},
+   		{name:'amount',index:'amount', width:80, align:"right",sorttype:"float"},
+   		{name:'tax',index:'tax', width:80, align:"right",sorttype:"float"},		
+   		{name:'total',index:'total', width:80,align:"right",sorttype:"float"},		
+   		{name:'note',index:'note', width:150, sortable:false}		
+   	],
+   	multiselect: true,
+   	caption: "测试页面"
+});
+var mydata = [
+		{id:"1",invdate:"2007-10-01",name:"test",note:"note",amount:"200.00",tax:"10.00",total:"210.00"},
+		{id:"2",invdate:"2007-10-02",name:"test2",note:"note2",amount:"300.00",tax:"20.00",total:"320.00"},
+		{id:"3",invdate:"2007-09-01",name:"test3",note:"note3",amount:"400.00",tax:"30.00",total:"430.00"},
+		{id:"4",invdate:"2007-10-04",name:"test",note:"note",amount:"200.00",tax:"10.00",total:"210.00"},
+		{id:"5",invdate:"2007-10-05",name:"test2",note:"note2",amount:"300.00",tax:"20.00",total:"320.00"},
+		{id:"6",invdate:"2007-09-06",name:"test3",note:"note3",amount:"400.00",tax:"30.00",total:"430.00"},
+		{id:"7",invdate:"2007-10-04",name:"test",note:"note",amount:"200.00",tax:"10.00",total:"210.00"},
+		{id:"8",invdate:"2007-10-03",name:"test2",note:"note2",amount:"300.00",tax:"20.00",total:"320.00"},
+		{id:"9",invdate:"2007-09-01",name:"test3",note:"note3",amount:"400.00",tax:"30.00",total:"430.00"}
+		];
+for(var i=0;i<=mydata.length;i++)
+	jQuery("#list4").jqGrid('addRowData',i+1,mydata[i]);
+
+});
+
+</script>
+
+</head>
+<body>
+
+<div id="header">
+<ul id="menu" >
+		<li><a href="[% c.uri_for('purchase_manage') %]" accesskey="1" title="">入货页</a></li>
+		<li><a href="[% c.uri_for('sale_manage') %]" accesskey="2" title="">销售页</a></li>
+		<li><a href="[% c.uri_for('stock_query') %]" accesskey="3" title="">库存查询</a></li>
+		<li><a href="[% c.uri_for('purchase_query') %]" accesskey="4" title="">进货查询</a></li>
+		<li><a href="[% c.uri_for('sale_query') %]" accesskey="5" title="">销售查询</a></li>
+		<li><a href="[% c.uri_for('stock_manage') %]" accesskey="6" title="">库存管理</a></li>
+
+	</ul>
+</div>
+<div id="content">
+
+[% content %]
+
+
+
+	
+<div id="footer">
+	<p>Copyright (c) 2010 Andy All rights reserved. Design by Andy </p>
+</div>
+
+<div style="font-size: 0.8em; text-align: center;">
+<br />
+
+<br />
+</div>
+
+
+</body>
+</html>

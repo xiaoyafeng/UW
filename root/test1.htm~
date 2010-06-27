@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title></title>
+<meta name="generator" content="Bluefish 2.0.0" >
+<meta name="author" content="xyf" >
+<meta name="date" content="2010-06-21T22:28:09+0800" >
+<meta name="copyright" content="">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
+<meta http-equiv="content-style-type" content="text/css">
+<meta http-equiv="expires" content="0">
+<meta http-equiv="refresh" content="5; URL=http://">
+</head>
+<body>
+<script>
+// This function takes a Node n, replaces it in the tree with an Element node
+// that represents an HTML <b> tag, and then makes the original node the
+// child of the new <b> element.
+function embolden(n) {
+    if (typeof n == "string") n = document.getElementById(n); // Lookup node
+    var b = document.createElement("b"); // Create a new <b> element
+    var parent = n.parentNode;           // Get the parent of the node
+    parent.replaceChild(b, n);           // Replace the node with the <b> tag
+    var text_elem = document.createTextNode("测试");
+    b.appendChild(text_elem);                    // Make the node a child of the <b> element
+
+}
+</script>
+
+<!-- A couple of sample paragraphs -->
+
+<!-- A button that invokes the embolden() function on the element named p1 -->
+<button onclick="embolden('p1');">Embolden</button>
+
+&nbsp
+
+<p id="p1"> </p>
+
+
+</script>
+</body>
+</html>

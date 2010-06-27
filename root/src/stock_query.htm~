@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Andy
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title> 库存查询</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen" href="static/css/default.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="static/css/ui-lightness/jquery-ui-1.8.1.custom.css" />
+
+<script type="text/javascript" src="static/js/jquery-1.4.2.min.js" >
+
+</script>
+
+
+<script type="text/javascript" src="static/js/jquery-ui-1.8.1.custom.min.js"></script>
+
+
+
+<script type="text/javascript" src="static/js/jquery.datePicker.js"></script>
+
+
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<script type="text/javascript" >
+$(function(){
+$('.date-picker').datepicker();
+$("button, input:submit").button();
+
+});
+
+</script>
+</head>
+<body>
+
+
+<div id="header">
+<ul id="menu">
+		<li><a href="purchase_manage.htm" accesskey="1" title="">入货页</a></li>
+		<li><a href="sale_manage.htm" accesskey="2" title="">销售页</a></li>
+		<li><a href="stock_query.htm" accesskey="3" title="">库存查询</a></li>
+		<li><a href="purchase_query.htm" accesskey="4" title="">进货查询</a></li>
+		<li><a href="sale_query.htm" accesskey="5" title="">销售查询</a></li>
+	</ul>
+</div>
+<div id="content">
+<h3>库存查询</h3>
+<table summary="query" >
+
+
+
+<tbody>
+<tr><td width="150"><label>商品数量</label></td><td align="left"><select name="compare_op" size="0" style="width:150px"><option> &gt= &nbsp</option><option> == </option><option> &lt= </option></select><input type="text" size="10" /></td></tr>
+<tr><td width="150"><label>商品名</label></td><td align="left"><select style="width:150px"><option>红</option><option>蓝</option><option>绿</option></select></td></tr>
+<tr><td width="150">时间</td><td align="left">	
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <dl>
+                    <dt>From: </dt>
+                        <dd>
+                            <input type="text" name="date1" class="date-pick" ></input>
+			</dd>
+                        <dt> To: </dt>
+								<dd>
+                            <input type="text" name="date2" class="date-pick" ></input>
+			</dd>
+</dl>
+</td></tr>
+
+</tbody>
+</table>
+
+<button>查询</button>
+
+
+
+
+
+													
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+</p>
+
+</div>
+<div id="footer">
+	<p>Copyright (c) 2010 Andy All rights reserved. Design by Andy </p>
+</div>
+
+<div style="font-size: 0.8em; text-align: center;">
+<br /><script type="text/javascript" >
+
+<br />
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Andy
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title> 销售入账</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="../static/css/default.css" rel="stylesheet" type="text/css" />
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+
+</head>
+<body>
+
+<div id="header">
+<ul id="menu">
+		<li><a href="#" accesskey="1" title="">入货页</a></li>
+		<li><a href="#" accesskey="2" title="">销售页</a></li>
+		<li><a href="#" accesskey="3" title="">库存查询</a></li>
+		<li><a href="#" accesskey="4" title="">入货查询</a></li>
+		<li><a href="#" accesskey="5" title="">销售查询</a></li>
+	</ul>
+</div>
+<div id="content">
+
+
+<table>
+	<tr><td>单价</td><td>商品名</td><td>数量</td><td>时间</td><td>经手人</td><td>添加</td></tr>
+	<tr><td><input></input></td><td><select   name="select" style="width:150px">  
+          <option   value="red">红</option>  
+          <option   value="blue">蓝</option>  
+          <option   value="green">绿</option>  
+      </select>
+ </td><td><input></input></td><td><input></input></td><td><select   name="select" style="width:150px">  
+          <option   value="windy">d</option>  
+         
+      </select></td><td><button>添加</button></td></tr>
+</table>
+<p>
+
+<h1>WARNING！！！！！！</h1>
+</p>
+<p>此页面仅限于添加销售信息，如需查询，请转至查询页面</p>
+
+<p>如果商品不在商品选择框内，请在先到入货页面新增商品</p>
+
+
+													
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+</p>
+
+</div>
+	
+<div id="footer">
+	<p>Copyright (c) 2010 Andy All rights reserved. Design by Andy </p>
+</div>
+
+<div style="font-size: 0.8em; text-align: center;">
+<br />
+
+<br />
+</div>
+
+
+</body>
+</html>

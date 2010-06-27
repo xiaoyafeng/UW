@@ -1,0 +1,9 @@
+
+[% IF no_wrapper;
+        content;
+    ELSE;
+        wrapper = wrapper || 'full.tt';
+        content WRAPPER $wrapper;
+	
+    END;
+-%]

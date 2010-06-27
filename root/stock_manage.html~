@@ -1,0 +1,50 @@
+<div id="content">
+<script language=javascript>
+function purchase_new(string n){
+	exit unless GetElementByID(n);
+
+
+
+
+
+}	
+
+
+
+</script>
+<h3>库存管理</h3>
+<form>
+<table>
+
+	<tr><td><button onclick="purchase_new('new')">新增商品</button></td><td><button>新增商品范畴</button></td><td><button>删除商品</button></td></tr>
+	<p id="new">
+	
+	
+	</p>
+    
+ </table>
+</form>
+<p>
+
+<h1>WARNING！！！！！！</h1>
+</p>
+<p>此页面仅限于添加销售信息，如需查询，请转至查询页面</p>
+
+<p>如果商品不在商品选择框内，请在先到入货页面新增商品</p>
+
+
+													
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+</p>
+
+</div>
+	
+

@@ -1,0 +1,50 @@
+<div id="content">
+<h3>销售入账</h3>
+
+<table>
+	<tr><td>单价</td><td>商品名</td><td>数量</td><td>时间</td><td>经手人</td><td>添加</td></tr>
+	<tr><td><input></input></td><td><select   name="select" style="width:150px">  
+[% FOREACH merchant IN merchants -%]          
+         <option   value="[% merchant.mer_name %]">[% merchant.mer_name %]</option>  
+        [% END -%]    
+      </select>
+ </td><td><input></input></td><td><input id="date-picker"></input></td><td><select   name="select" style="width:150px">  
+          
+	[% FOREACH person IN persons -%]
+          <option   value="[% person.first_name %][% person.last_name %]">[% person.first_name %][% person.last_name %]</option>  
+        [% END -%] 
+
+<script type="text/javascript" src="static/js/jquery-1.4.2.min.js" 
+
+</script
+
+
+<script type="text/javascript" src="static/js/jquery-ui-1.8.1.custom.min.js"></script
+
+         
+      </select></td><td><button>添加</button></td></tr>
+</table>
+<p>
+
+<h1>WARNING！！！！！！</h1>
+</p>
+<p>此页面仅限于添加销售信息，如需查询，请转至查询页面</p>
+
+<p>如果商品不在商品选择框内，请在先到入货页面新增商品</p>
+
+
+													
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+</p>
+
+</div>
+	
+

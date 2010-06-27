@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Andy
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title> 进货页</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href= "[% c.uri_for('static/css/default.css') %]" rel="stylesheet" type="text/css" />
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+
+<link rel="stylesheet" type="text/css" media="screen" href="[% c.uri_for('static/css/ui-lightness/jquery-ui-1.8.1.custom.css') %]" />
+
+<script type="text/javascript" src="[% c.uri_for('static/js/jquery-1.4.2.min.js') %]" >
+
+</script>
+
+
+<script type="text/javascript" src="[% c.uri_for('static/js/jquery-ui-1.8.1.custom.min.js') %]"></script>
+<script type="text/javascript" src="[% c.uri_for('static/js/ajaxupload.js') %]">
+
+</script>
+
+<script type="text/javascript" >
+$(function(){
+$('#date-picker').datepicker();
+$("button, input:submit").button();
+var $upload = $('#upload');
+new AjaxUpload($upload, {action: 'upload.php'});
+
+});
+</script>
+
+</head>图片
+<body>
+
+<div id="header">
+<ul id="menu">
+		<li><a href="purchase_manage.htm" accesskey="1" title="">入货页</a></li>
+		<li><a href="sale_manage.htm" accesskey="2" title="">销售页</a></li>
+		<li><a href="stock_query.htm" accesskey="3" title="">库存查询</a></li>
+		<li><a href="purchase_query.htm" accesskey="4" title="">进货查询</a></li>
+		<li><a href="sale_query.htm" accesskey="5" title="">销售查询</a></li>
+	</ul>
+</div>
+<div id="content">
+<h3>进货入账</h3>
+
+<table width="500">
+<tbody>
+	<tr><td>成本</td><td>商品名</td><td>数量</td><td>时间</td><td>经手人</td><td>添加</td></tr>
+	<tr><td><input style="width:100px"></input></td><td><select   name="select" style="width:150px">  
+          <option   value="red">红</option>  
+          <option   value="blue">蓝</option>  
+          <option   value="green">绿</option>  
+      </select>
+ </td><td><input></input></td><td><input id="date-picker"></input></td><td><select   name="select" style="width:150px">  
+          <option   value="windy">d</option>  
+         
+      </select></td><td><div>
+				<input id="button3" type="file" />
+			</div>
+</td></tr>
+      </tbody>
+</table>
+<br />
+<br />
+<button>添加</button>
+<p>
+
+<h1>WARNING！！！！！！</h1>
+</p>
+<p>此页面仅限于添加入货信息，如需查询，请登录查询页面</p>
+
+<p>如果新增商品不在商品选择框内，请点击新增商品按钮</p>
+
+
+													
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+</p>
+<ul id="menu">
+<li><button>新增商品</button></li>
+<li><button>新增商品范畴</button></button></li>
+</ul>
+</div>
+	
+<div id="footer">
+	<p>Copyright (c) 2010 Andy All rights reserved. Design by Andy </p>
+</div>
+
+<div style="font-size: 0.8em; text-align: center;">
+<br />
+
+<br />
+</div>
+
+
+</body>
+</html>

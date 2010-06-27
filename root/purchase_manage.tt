@@ -1,0 +1,48 @@
+<div id="content">
+<h3>入货页</h3>
+
+<table width="500">
+<tbody>
+	<tr><td>成本</td><td>商品名</td><td>数量</td><td>时间</td><td>经手人</td><td>添加</td></tr>
+	<tr><td><input style="width:100px"></input></td><td><select   name="select" style="width:150px">  
+	[% FOREACH merchant IN merchants -%]          
+         <option   value="[% merchant.mer_name %]">[% merchant.mer_name %]</option>  
+        [% END -%]
+      </select>
+ </td><td><input></input></td><td><input id="date-picker"></input></td><td><select   name="select" style="width:150px">  
+	[% FOREACH person IN persons -%]
+          <option   value="[% person.first_name %][% person.last_name %]">[% person.first_name %][% person.last_name %]</option>  
+        [% END -%] 
+      </select></td><td><div>
+				<input id="button3" type="file" />
+			</div>
+</td></tr>
+      </tbody>
+</table>
+<br />
+<br />
+<button>添加</button>
+<p>
+
+<h1>WARNING！！！！！！</h1>
+</p>
+<p>此页面仅限于添加入货信息，如需查询，请登录查询页面</p>
+
+<p>如果新增商品不在商品选择框内，请点击新增商品按钮</p>
+
+
+													
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+</p>
+
+</div>
+	
+

@@ -1,0 +1,68 @@
+<div id="content">
+<script language=javascript>
+function purchase_new(i){
+var p_new = document.getElementById(i);
+var children = p_new.childNodes;
+for(var i = 0; i<=children.length; i++){
+	p_new.removeChild(children[i]);
+}
+var new_table = document.createElement('table');
+var new_th1   = document.createElement('th')
+var new_th2   =	document.createElement('th');
+var new_th3   = document.createElement('th');
+var new_head1 = document.createTextNode('商品名称');
+var new_head2 = document.createTextNode('所属范畴');
+var new_head3 = document.createTextNode('图片上载');
+new_th1.appendChild(new_head1);
+new_th2.appendChild(new_head2);
+new_th3.appendChild(new_head3);
+
+
+new_table.appendChild(new_th1);
+new_table.appendChild(new_th2);
+new_table.appendChild(new_th3);
+p_new.appendChild(new_table);
+var p_new = document.getElementById(i);
+var children = p_new.childNodes;
+for(var i = 0; i<=children.length; i++){
+	p_new.removeChild(children[i]);
+}
+var new_table = document.createElement('table');
+var new_th1   = document.createElement('th')
+var new_head1 = document.createTextNode('范畴名称');
+new_th1.appendChild(new_head1);
+
+
+new_table.appendChild(new_th1);
+p_new.appendChild(new_table);
+
+
+
+
+
+}
+</script>
+<h3>库存管理</h3>
+<form>
+<table>
+
+	<tr><td><button onclick="purchase_new('new_form');return false;">新增商品</butthn></td><td><button onclick="cate_new('new_form'); return false;">新增商品范畴</button></td><td><button>删除商品</button></td></tr>
+    
+ </table>
+</form>
+<p id='new_form'>
+
+</p>
+
+<form action="/upload" method="post" enctype="multipart/form-data">
+	<input type="text"   name="text_test" value="test!">	
+	<input type="hidden" name="form_submit" value="yes">
+	<input type="file"   name="my_file">
+	<input type="submit" value="Send">
+</form>
+
+<table id="list4" class="scroll" cellpadding="0" cellspacing="0"></table> 
+
+</div>
+	
+</html>
